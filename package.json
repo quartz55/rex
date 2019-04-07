@@ -1,0 +1,59 @@
+{
+  "name": "rex",
+  "version": "0.0.0",
+  "description": "My Project",
+  "esy": {
+    "build": "pesy",
+    "release": {
+      "releasedBinaries": [
+        "RexApp.exe"
+      ]
+    }
+  },
+  "buildDirs": {
+    "test": {
+      "require": [
+        "rex.lib"
+      ],
+      "main": "TestRex",
+      "name": "TestRex.exe"
+    },
+    "lib": {
+      "require": [
+        "lwt",
+        "lwt.unix",
+        "httpaf",
+        "httpaf-lwt"
+      ],
+      "name": "rex.lib",
+      "namespace": "Rex"
+    },
+    "bin": {
+      "require": [
+        "rex.lib"
+      ],
+      "main": "RexApp",
+      "name": "RexApp.exe"
+    }
+  },
+  "scripts": {
+    "pesy": "bash -c 'env PESY_MODE=update pesy'",
+    "test": "esy x TestRex.exe"
+  },
+  "dependencies": {
+    "@opam/dune": ">=1.6.0",
+    "@esy-ocaml/reason": "*",
+    "refmterr": "*",
+    "ocaml": "^4.4.0",
+    "pesy": "*",
+    "@opam/httpaf": "*",
+    "@opam/httpaf-lwt": "*"
+  },
+  "devDependencies": {
+    "@opam/merlin": "*"
+  },
+  "resolutions": {
+    "@opam/httpaf": "inhabitedtype/httpaf:httpaf.opam#c2ee924",
+    "@opam/httpaf-lwt": "inhabitedtype/httpaf:httpaf-lwt.opam#c2ee924"
+  }
+}
